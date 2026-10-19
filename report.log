@@ -1,0 +1,18 @@
+2026-10-16 17:21:02,744 INFO Authenticated with Yeastar API (auth endpoint v1.0)
+2026-10-16 17:21:06,076 INFO Fetched CDR page 1: 423 rows (total reported 423)
+2026-10-16 17:21:06,098 INFO CDR endpoint=v2.0; rows fetched=423; rows in requested window=423; API total_number=423
+2026-10-16 17:21:06,098 INFO Fetched 423 CDR records for reporting window
+2026-10-16 17:21:06,144 INFO Analyzed 423 unique CDR records for the reporting period
+2026-10-16 17:21:09,954 INFO Report email sent to 2 recipient(s)
+2026-10-16 17:22:02,245 INFO Authenticated with Yeastar API (auth endpoint v1.0)
+2026-10-16 17:22:05,436 INFO Fetched CDR page 1: 423 rows (total reported 423)
+2026-10-16 17:22:05,460 INFO CDR endpoint=v2.0; rows fetched=423; rows in requested window=423; API total_number=423
+2026-10-16 17:22:05,461 INFO Fetched 423 CDR records for reporting window
+2026-10-16 17:22:05,510 INFO Analyzed 423 unique CDR records for the reporting period
+2026-10-16 17:22:08,642 INFO Report email sent to 2 recipient(s)
+2026-10-19 04:00:02,697 INFO Authenticated with Yeastar API (auth endpoint v1.0)
+2026-10-19 04:00:06,183 INFO Fetched CDR page 1: 523 rows (total reported 523)
+2026-10-19 04:00:06,204 INFO CDR endpoint=v2.0; rows fetched=523; rows in requested window=523; API total_number=523
+2026-10-19 04:00:06,204 INFO Fetched 523 CDR records for reporting window
+2026-10-19 04:00:06,256 INFO Analyzed 523 unique CDR records for the reporting period
+2026-10-19 04:00:10,235 INFO Report email sent to 5 recipient(s)
