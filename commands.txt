@@ -1,0 +1,14 @@
+python yeastar_call_incidents.py \
+  --start 2026-10-12 \
+  --end 2026-10-18 \
+  --extension 1015
+
+python yeastar_call_incidents.py \
+  --start 2026-10-12 \
+  --end 2026-10-18 \
+  --extension 1015 \
+  --all-statuses
+
+python yeastar_call_incidents.py \
+  --start 2026-10-12 \
+  --end 2026-10-18

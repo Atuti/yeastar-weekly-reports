@@ -394,12 +394,24 @@ def build_html(result, start, end):
             if agent_dept != dept:
                 continue
             answered = [r for r in agent_calls if is_answered(r)]
-            missed = [r for r in agent_calls if is_missed(r)]
+            missed_inbound = [
+                r for r in agent_calls if is_inbound(r) and is_missed(r)
+            ]
+            missed_outbound = [
+                r for r in agent_calls if is_outbound(r) and is_missed(r)
+            ]
             durations = [int(r.get("handling_duration") or 0) for r in answered]
             avg_handle = round(statistics.mean(durations), 1) if durations else 0
-            agent_rows.append([agent, len(agent_calls), len(answered), len(missed), fmt_seconds(avg_handle)])
+            agent_rows.append([
+                agent,
+                len(agent_calls),
+                len(answered),
+                len(missed_inbound),
+                len(missed_outbound),
+                fmt_seconds(avg_handle),
+            ])
         if not agent_rows:
-            agent_rows = [["No mapped agent records", "-", "-", "-", "-"]]
+            agent_rows = [["No mapped agent records", "-", "-", "-", "-", "-"]]
 
         queue_counts = Counter()
         ivr_counts = Counter()
@@ -440,7 +452,7 @@ def build_html(result, start, end):
         <b>missed/failed/busy:</b> {len(d['missed'])} ({pct(len(d['missed']),len(d['inbound'])):.1f}%);
         <b>abandoned:</b> {len(d['abandoned'])}; <b>voicemail:</b> {len(d['voicemail'])}.
         <b>Outbound:</b> {len(d['outbound'])}; connected {len(d['outbound_connected'])} ({pct(len(d['outbound_connected']),len(d['outbound'])):.1f}%).</p>
-        <h3>Agent / extension performance</h3>{table(["Agent/extension","CDRs","Answered","Missed/failed","Avg handling"], agent_rows)}
+        <h3>Agent / extension performance</h3>{table(["Agent/extension","CDRs","Answered","Missed/failed (inbound)","Missed/failed (outbound)","Avg handling"], agent_rows)}
         <h3>Callback analysis (heuristic)</h3>{table(["Metric","Value"], callback_rows)}
         <h3>Queue / ring-group status entries</h3>{table(["Queue or status","CDR entries"], queue_rows)}
         <h3>IVR references (not a full menu drop-off funnel)</h3>{table(["IVR reference","CDR entries"], ivr_rows)}
@@ -542,4 +554,3 @@ if __name__ == "__main__":
     except Exception:
         LOG.exception("Weekly Yeastar report failed")
         raise
-
